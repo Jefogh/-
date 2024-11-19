@@ -33,14 +33,14 @@ jobs:
       # الخطوة 4: إنشاء ملف تنفيذي باستخدام PyInstaller
       - name: Build executable
         run: |
-          pyinstaller --onefile --noconsole "55555555555555 5555555.py"
+          pyinstaller --onefile --noconsole main.py
 
-      # الخطوة 5: رفع الملف التنفيذي إلى قسم الإصدارات
+      # الخطوة 5: رفع الملف التنفيذي كـ Artifact
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
           name: captcha-solver
-          path: dist/55555555555555 5555555.exe
+          path: dist/main.exe
 
   release:
     runs-on: ubuntu-latest
@@ -55,6 +55,6 @@ jobs:
       - name: Create GitHub release
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/55555555555555 5555555.exe
+          files: dist/main.exe
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
